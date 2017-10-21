@@ -48,6 +48,7 @@ a{
     top: 10%;
 }
 #box{
+    overflow: hidden;
     width: 74%;
     position: relative;
     left: 14%;

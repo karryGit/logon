@@ -10,7 +10,6 @@ header("content-type:text/html;charset=utf-8");
 require_once 'database.php';
 $username = "";
 $password = "";
-
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -20,16 +19,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     $select = $db->selSQL($mysql);
     foreach ($select as $key => $value) {
-        if ($username == $value['phone']) {
+        if ($username === $value['phone']) {
             if ($password == $value['password']) {
-                echo '登录成功'.','.$value['phone'].','.$value['password'];
+                echo '登录成功';
             } else {
                 echo '密码错误';
             }
-        } else {
-            echo '账号不存在';
         }
-
     }
 }
 
