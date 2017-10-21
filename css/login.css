@@ -115,9 +115,12 @@ a{
     color: rgb(159,159,159);
 }
 .box_p{
-    position: absolute;
-    left: 65%;
-    top: 58%;
+    float: right;
+    position: relative;
+    margin: 15px 0;
+    font-size: 14px;
+    top: 37%;
+    right: 14%;
 }
 .social{
     position: absolute;
@@ -145,4 +148,28 @@ a{
 .box_p a:hover{
     color: black;
 }
+li{
+    list-style: none;
+}
+.dropdown-menu li a{
+    text-align: center;
+    color: black;
+}
+.dropdown-menu{
+    right: 0;
+    border-radius: 4px;
+    position: absolute;
+    top: 25px;
+    width: 190px;
+    background-color: white;
+    z-index: 1000;
+}
+.dropdown-menu li {
+    padding: 10px 10px;
+    line-height: 20px;
+    height: 40px;
+}
 
+.dropdown-menu li:hover {
+    background-color: rgb(245,245,245);
+}

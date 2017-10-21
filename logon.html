@@ -65,7 +65,7 @@
                 this.active = ''
             },
             clicked: function () {
-                if (this.name == "") {
+                if (this.name == " ") {
                     alert("请填写用户名");
                     return false;//不提交
                 }
@@ -73,11 +73,11 @@
                 if(re.test(this.phone) == false){
                     alert('您输入的不是一个手机号')
                 }
-                if (this.phone == "") {
+                if (this.phone == " ") {
                     alert("手机号不能为空");
                 }
 
-                if (this.password == "") {
+                if (this.password == " ") {
                     alert("密码不能为空");
                     return false;//不提交
                 }

@@ -5,11 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>登录</title>
-    <link rel="stylesheet" href="css/login.css">
+    <title>找回密码</title>
+    <link rel="stylesheet" href="css/forget.css">
     <script src="node_modules/vue/dist/vue.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
-
 </head>
 <body>
 
@@ -17,48 +16,9 @@
     <img src="img/jianshu.png"/>
 </div>
 <div id="app">
-    <div class="all">
-        <a href="login.html" class="active">登录</a>
-        <b>·</b>
-        <a href="logon.html" v-bind:class="active" @mouseenter="enter" @mouseleave="leave">注册</a>
-    </div>
-    <div id="box">
-        <input v-model="phone" type="text" id="phone" placeholder="手机号或邮箱">
-        <hr>
-        <input v-model="password" id="setPass" type="password" placeholder="密码">
-        <img id="test" v-bind:src="scr" @mouseenter="srcEnter" @mouseleave="srcLeave" height="47" width="306"/>
-        <button v-on:click="clicked" id="submit">登录</button>
-    </div>
-    <span id="Remember"><input type="checkbox" v-bind:checked="check" @onclick="remember">&nbsp记住我</span>
-    <div class="box_p">
-        <a class="dropdown" v-on:click="problem" href="#">登录遇到问题?</a>
-        <ul v-show ='show' class="dropdown-menu">
-            <li>
-                <a href="forget.html">用手机号重置密码</a>
-            </li>
-            <li>
-                <a href="#">用邮箱重置密码</a>
-            </li>
-            <li>
-                <a target="_blank" href="http://www.jianshu.com/p/9058d0b8711d">无法用海外手机号登录</a>
-            </li>
-            <li>
-                <a target="_blank" href="http://www.jianshu.com/p/498a9fa7da08">无法用 Google 帐号登录</a>
-            </li>
-        </ul>
-    </div>
-    <!--横线-->
-    <div class="hengxian"></div>
-    <!--社交账号登录-->
-    <h6 class="social">社交帐号直接注册</h6>
-    <div class="hengxian1"></div>
-    <!--三张图片-->
-    <div id="app_img">
-        <img src="img/weibo.png" height="50" width="50"/>
-        <img src="img/weixin.png" height="50" width="50"/>
-        <img src="img/qq.png" height="50" width="50"/>
-        <img src="img/qita.png" height="55" width="55"/></div>
+
 </div>
+
 <script>
     var vm = new Vue({
         el: '#app',
@@ -73,7 +33,7 @@
         methods: {
 
             problem:function () {
-               this.show = !this.show;
+                this.show = !this.show;
             },
             remember: function () {
                 this.check = false;

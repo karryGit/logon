@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background-color:rgb(241,241,241) ;
+}
+a{
+    text-decoration: none;
+}
+#logo{
+    position: absolute;
+    top: 56px;
+    margin-left: 50px;
+}
+#logo img{
+    width: 100px;
+}
+#app{
+    position: relative;
+    width: 400px;
+    height: 520px;
+    margin: 60px auto 0;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0,0,0,.1);
+    vertical-align: middle;
+}
