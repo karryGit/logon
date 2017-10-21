@@ -51,7 +51,7 @@ a{
     width: 74%;
     position: relative;
     left: 14%;
-    top: 22%;
+    top: 25%;
     border-radius: 4px;
     border: 1px solid rgb(160,160,160);
 }
@@ -96,17 +96,17 @@ a{
     outline: none;
     position: absolute;
     left: 14%;
-    top: 52%;
+    top: 56%;
 }
 #app_img{
     left: 31%;
     position: absolute;
-    top: 80%;
+    top: 85%;
 }
 #agree{
     position: absolute;
     left: 24%;
-    top:62%;
+    top:67%;
     text-align: center;
     font-size: 12px;
     line-height: 20px;
@@ -118,14 +118,14 @@ a{
 .social{
     position: absolute;
     left: 40%;
-    top: 75%;
+    top: 77%;
     font-size: 12px;
     color: #b5b5b5;
 }
 .hengxian{
     position: absolute;
     left: 24%;
-    top: 76%;
+    top: 78%;
     width: 50px;
     height: 1px;
     background-color: #b5b5b5;;
@@ -133,7 +133,7 @@ a{
 .hengxian1{
     position: absolute;
     left: 66%;
-    top: 76%;
+    top: 78%;
     width: 50px;
     height: 1px;
     background-color: #b5b5b5;;

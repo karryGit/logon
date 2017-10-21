@@ -13,13 +13,13 @@
 <body>
 
 <div id="logo">
-  <img src="img/logo.png"/>
+    <img src="img/jianshu.png"/>
 </div>
 <div id="app">
     <div class="all">
         <a href="login.html" v-bind:class="active" @mouseenter="enter" @mouseleave="leave">登录</a>
         <b>·</b>
-        <a href="#" class="active">注册</a>
+        <a href="logon.html" class="active">注册</a>
     </div>
     <div id="box">
         <input id="Nickname" type="text" placeholder="你的昵称" v-model="name">
@@ -69,13 +69,14 @@
                     alert("请填写用户名");
                     return false;//不提交
                 }
+                var re = /^0{0,1}1[3578][0-9]{9}$/g;
+                if(re.test(this.phone) == false){
+                    alert('您输入的不是一个手机号')
+                }
                 if (this.phone == "") {
                     alert("手机号不能为空");
-                    if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.phone))) {
-                        alert("不是完整的11位手机号或者正确的手机号前七位");
-                        return false;//不提交
-                    }
                 }
+
                 if (this.password == "") {
                     alert("密码不能为空");
                     return false;//不提交
@@ -92,28 +93,33 @@
                     alert("手机号不能包含空格");
                     return false;//不提交
                 }
-                console.log(this.name,this.phone,this.password);
+                $.ajax({
+                    url: 'php/logon.php',
+                    type: 'POST',
+                    data: {
+                        username: this.name,
+                        password: this.password,
+                        phone: this.phone
+                    },
+                    success: function (res) {
+                       if(res == '增加成功'){
+                           vm.name = "";
+                           vm.password = "";
+                           vm.phone = "";
+                         alert('恭喜您注册成功');
+                       }else if (res == '账号已存在'){
+                           alert('账号已存在')
+                       }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
                 return true;
             }
         }
     });
-            $("#submit").on("click",function () {
-                $.ajax({
-                    url:'php/logon.php',
-                    type:'POST',
-                    data:{
-                        username:vm.name,
-                        password:vm.password,
-                        phone:vm.phone
-                    },
-                    success:function (res) {
-                        console.log(res);
-                    },
-                    error:function (err) {
-                        console.log(err);
-                    }
-                });
-            })
+
 </script>
 </body>
 </html>

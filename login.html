@@ -8,37 +8,112 @@
     <title>登录</title>
     <link rel="stylesheet" href="css/login.css">
     <script src="node_modules/vue/dist/vue.js"></script>
-    <script src="js/Ajax.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
 
 <div id="logo">
-    <img src="img/logo.png"/>
+    <img src="img/jianshu.png"/>
 </div>
 <div id="app">
     <div class="all">
-        <a href="#" class="login">登录</a>
-        <b>.</b>
-        <a href="logon.html" class="logon">注册</a>
+        <a href="login.html" class="active">登录</a>
+        <b>·</b>
+        <a href="logon.html" v-bind:class="active" @mouseenter="enter" @mouseleave="leave">注册</a>
     </div>
-    <div class="box">
-        <input type="text">
-        <input type="text">
-        <img src="img/验证.png" height="47" width="306"/>
-        <input type="checkbox">
-        <p class="box_p"><a href="#">登录遇到问题</a></p>
+    <div id="box">
+        <input type="text" id="phone" placeholder="手机号或邮箱">
+        <hr>
+        <input id="setPass" type="password" placeholder="密码">
+        <img id="test" src="img/验证.png" height="47" width="306"/>
         <button id="submit">登录</button>
     </div>
+    <span id="Remember"><input type="checkbox" checked="checked">&nbsp记住我</span>
+    <p class="box_p"><a href="#">登录遇到问题?</a></p>
     <!--横线-->
     <div class="hengxian"></div>
     <!--社交账号登录-->
-    <div class="hengxian"></div>
-    <!--四张图片-->
-    <div>
-
-    </div>
+    <h6 class="social">社交帐号直接注册</h6>
+    <div class="hengxian1"></div>
+    <!--三张图片-->
+    <div id="app_img">
+        <img src="img/weibo.png" height="50" width="50"/>
+        <img src="img/weixin.png" height="50" width="50"/>
+        <img src="img/qq.png" height="50" width="50"/>
+        <img src="img/qita.png" height="55" width="55"/></div>
 </div>
 <script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            active: '',
+            name: '',
+            phone: '',
+            password: ''
+        },
+        methods: {
+            enter: function () {
+                this.active = 'active'
+            },
+            leave: function () {
+                this.active = ''
+            },
+            clicked: function () {
+                if (this.name == "") {
+                    alert("请填写用户名");
+                    return false;//不提交
+                }
+                var re = /^0{0,1}1[3578][0-9]{9}$/g;
+                if(re.test(this.phone) == false){
+                    alert('您输入的不是一个手机号')
+                }
+                if (this.phone == "") {
+                    alert("手机号不能为空");
+                }
+
+                if (this.password == "") {
+                    alert("密码不能为空");
+                    return false;//不提交
+                }
+                if (this.name.indexOf(" ") != -1) {
+                    alert("用户名不能包含空格");
+                    return false;//不提交
+                }
+                if (this.password.indexOf(" ") != -1) {
+                    alert("密码不能包含空格");
+                    return false;//不提交
+                }
+                if (this.phone.indexOf(" ") != -1) {
+                    alert("手机号不能包含空格");
+                    return false;//不提交
+                }
+                $.ajax({
+                    url: 'php/login.php',
+                    type: 'POST',
+                    data: {
+                        username: this.name,
+                        password: this.password,
+                        phone: this.phone
+                    },
+                    success: function (res) {
+                        if(res == '增加成功'){
+                            vm.name = "";
+                            vm.password = "";
+                            vm.phone = "";
+                            alert('恭喜您注册成功');
+                        }else if (res == '账号已存在'){
+                            alert('账号已存在')
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+                return true;
+            }
+        }
+    });
 
 </script>
 </body>

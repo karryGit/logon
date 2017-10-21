@@ -32,8 +32,6 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['phon
         echo '增加失败';
     }
     //关闭数据库
-    mysqli_close($db);
-
 }
 
 
